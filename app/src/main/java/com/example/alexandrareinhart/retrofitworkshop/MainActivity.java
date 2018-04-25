@@ -29,6 +29,20 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
+    @Override
+    public void onBackPressed() {
+/*
+if(lyricsFragment.isVisible)){
+
+ */
+        int count = getFragmentManager().getBackStackEntryCount();
+        if (count == 0) {
+            super.onBackPressed();
+        } else {
+            getFragmentManager().popBackStack();
+        }
+    }
+
     @OnClick(R.id.submit_button)
     protected void submitClicked() {
 
@@ -49,13 +63,3 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-
-/*
-Bundle bundle = new Bundle();
-        String myMessage = "Stackoverflow is cool!";
-        bundle.putString("message", myMessage );
-        FragmentClass fragInfo = new FragmentClass();
-        fragInfo.setArguments(bundle);
-        transaction.replace(R.id.fragment_single, fragInfo);
-        transaction.commit();
- */

@@ -49,7 +49,7 @@ public class LyricsFragment extends Fragment {
         String songTitle = getArguments().getString(SONG_TITLE);
 
         buildRetrofit();
-        
+
         makeApiCall(artistName, songTitle);
     }
 
