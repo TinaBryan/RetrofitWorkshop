@@ -1,11 +1,26 @@
 package com.example.alexandrareinhart.retrofitworkshop;
 
+import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String ARTIST_NAME = "artist_name";
+    public static final String SONG_TITLE = "song_title";
+
+    @BindView(R.id.input_artist_editText)
+    protected TextInputEditText artistEditText;
+    @BindView(R.id.input_song_editText)
+    protected TextInputEditText songEditText;
+
+    private LyricsFragment lyricsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,4 +28,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
     }
+
+    @OnClick(R.id.submit_button)
+    protected void submitClicked() {
+
+        if (artistEditText.getText().toString().isEmpty() || songEditText.getText().toString().isEmpty()) {
+
+            Toast.makeText(this, "ERROR. ALL FIELDS REQUIRED.", Toast.LENGTH_LONG).show();
+        } else {
+
+            lyricsFragment = LyricsFragment.newInstance();
+
+            Bundle bundle = new Bundle();
+            bundle.putString(ARTIST_NAME, artistEditText.getText().toString());
+            bundle.putString(SONG_TITLE, songEditText.getText().toString());
+            lyricsFragment.setArguments(bundle);
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, lyricsFragment).commit();
+        }
+    }
 }
+
+
+/*
+Bundle bundle = new Bundle();
+        String myMessage = "Stackoverflow is cool!";
+        bundle.putString("message", myMessage );
+        FragmentClass fragInfo = new FragmentClass();
+        fragInfo.setArguments(bundle);
+        transaction.replace(R.id.fragment_single, fragInfo);
+        transaction.commit();
+ */
