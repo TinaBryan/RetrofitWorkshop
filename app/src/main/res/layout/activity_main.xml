@@ -7,16 +7,7 @@
     android:background="@color/rust"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/fragment_holder"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-    </FrameLayout>
 
 
     <android.support.design.widget.TextInputLayout
@@ -39,7 +30,7 @@
             android:backgroundTint="@color/darkGreen"
             android:textColor="@android:color/black"
             android:textColorHighlight="@color/paleOrange"
-            android:textColorHint="@color/darkGreen"
+
             android:textSize="30sp" />
     </android.support.design.widget.TextInputLayout>
 
@@ -62,7 +53,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/darkGreen"
             android:textColorHighlight="@color/paleOrange"
-            android:textColorHint="@color/darkGreen"
+
             android:textColor="@android:color/black"
             android:textSize="30sp" />
     </android.support.design.widget.TextInputLayout>
@@ -83,5 +74,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/song_layout"
         app:layout_constraintVertical_bias="0.931" />
+
+    <FrameLayout
+        android:id="@+id/fragment_holder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
